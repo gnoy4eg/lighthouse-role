@@ -1,0 +1,6 @@
+---
+- name: Apache systemd started
+  ansible.builtin.systemd:
+    name: httpd
+    enabled: true
+    state: started
