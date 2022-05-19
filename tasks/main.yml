@@ -1,21 +1,15 @@
 ---
-- name: Install lighthouse
-  hosts: lighthouse
-  become: true
-  become_user: root
-  remote_user: centos
-  tasks:
-    - name: Install git
-      ansible.builtin.yum:
-        name: git
-        state: present
-    - name: Install apache
-      ansible.builtin.yum:
-        name: httpd
-        state: present
-      notify: Apache systemd started
-    - name: Clone repo lighthouse
-      ansible.builtin.git:
-        repo: https://github.com/VKCOM/lighthouse.git
-        dest: /var/www/html
-        version: master
+  - name: Install git
+    ansible.builtin.yum:
+      name: git
+      state: present
+  - name: Install apache
+    ansible.builtin.yum:
+      name: httpd
+      state: present
+    notify: Apache systemd started
+  - name: Clone repo lighthouse
+    ansible.builtin.git:
+      repo: https://github.com/VKCOM/lighthouse.git
+      dest: /var/www/html
+      version: master
